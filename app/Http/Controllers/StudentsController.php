@@ -35,6 +35,7 @@ class StudentsController extends Controller
     }
     public function process_insert_students_excel(Request $rq){
           Excel::import(new StudentImport, $rq->file('excel_student')->path());
+          return redirect()->route('students.show_students');
 
     }
     public function delete($id)

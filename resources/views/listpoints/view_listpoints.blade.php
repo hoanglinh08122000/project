@@ -3,7 +3,7 @@
 
 <div class="card"  >
 	<div class="card-header" >
-		<strong>Phân công theo giáo viên </strong> 
+		<strong>Điểm danh </strong> 
 	</div>
 	<div class="card-body card-block" >
 		<form action="{{ route('teacher.process_insert_teacher') }}" method="post" enctype="multipart/form-data" class="form-horizontal">

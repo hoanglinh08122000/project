@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Teacher;
+use App\Imports\TeacherImport;
+use Excel;
 
 class TeacherController extends Controller
 {
@@ -35,6 +37,14 @@ class TeacherController extends Controller
         Teacher::create($rq->all()); 
 
     	return redirect()->route('teacher.show_teacher');
+
+    }
+    public function view_insert_teacher_excel(){
+        return view('teacher.view_insert_teacher_excel');
+    }
+    public function process_insert_teacher_excel(Request $rq){
+          Excel::import(new TeacherImport, $rq->file('excel_teacher')->path());
+          return redirect()->route('teacher.show_teacher');
 
     }
     public function delete($id)

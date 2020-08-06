@@ -17,6 +17,7 @@ class Teacher extends Model
         }
     protected $attributes = [
         'level' => 2,
+        'password' => 1,
     ];
     public $timestamps = false; 
     public function setPasswordAttribute($password){

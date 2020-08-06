@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Course;
-use App\Models\Discipline;
-use App\Models\Classs;
-use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\Students;
+use App\Models\Discipline;
+use App\Models\Course;
+use App\Models\Subject;
+use App\Models\Classs;
 
-
-class AssignmentController extends Controller
+class ListpointsController extends Controller
 {
-	public function assignment_teacher(){
+    public function view_listpoints(){
 		$courses=Course::get();
 		$disciplines=Discipline::get();
 		$classs=Classs::get();
 		$subjects=Subject::get();
 		$teachers=Teacher::get();
 
-		return view('assignment.assignment_teacher',[
+		return view('listpoints.view_listpoints',[
 			'courses'=> $courses,
 			'disciplines'=> $disciplines,
 			'classs'=> $classs,

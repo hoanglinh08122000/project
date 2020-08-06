@@ -59,7 +59,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-female "></i>Giáo viên</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-bars"></i><a href="{{ route('teacher.index_teacher') }}">Xem</a></li>
+
                         <li><i class="fa fa-bars"></i><a href="{{ route('teacher.view_insert_teacher') }}">Thêm</a></li>
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{ route('teacher.view_insert_teacher_excel') }}">Thêm Excel </a></li>
                         <li><i class="fa fa-share-square-o"></i><a href="{{ route('teacher.show_teacher') }}">Sửa thông tin</a></li>
                     </ul>
                 </li>
@@ -85,20 +87,17 @@
                 </li>
                 
                 <h3 class="menu-title">Điểm danh</h3>
-                <li class="{{-- menu-item-has-children dropdown --}}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Điểm danh</a>
-                    {{-- <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                        <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
-                    </ul> --}}
+                <li>
+                    <a href="{{ route('listpoints.view_listpoints') }}"> <i class="menu-icon fa fa-table"></i>Điểm danh </a>
                 </li>
-                {{-- <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+               {{--  <li class="menu-item-has-children dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Điểm danh</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                        <li><i class="fa fa-table"></i><a href="">Điểm danh</a></li>
+                        <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
                     </ul>
                 </li> --}}
+                
                 
                 <h3 class="menu-title">Thông tin</h3>
 
