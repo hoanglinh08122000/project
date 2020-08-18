@@ -1,52 +1,68 @@
-
 @extends('layouts.master')
 @section('content')
 	
 	<div class="card"  >
 		<div class="card-header" >
-			<strong>Thêm sinh viên</strong> 
+			<strong>Thêm giáo viên</strong> 
 		</div>
 		<div class="card-body card-block" >
-			<form action="{{ route('teacher.process_update_teacher',['id'=>$teacher->id]) }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+			<form action="{{ route('teacher.process_insert_teacher') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
 				@csrf
 				
 				
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Họ</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="first_name" placeholder="Text" class="form-control" value="{{ $teacher->first_name }}"><small class="form-text text-muted">This is a help text</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="first_name" placeholder="Text" class="form-control" value="{{ old('first_name') }}">{{ $errors->first('first_name') }}</div>
 				</div>
-					<div class="row form-group">
+				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="last_name" placeholder="Text" class="form-control" value="{{ $teacher->last_name }}"><small class="form-text text-muted">This is a help text</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="last_name" placeholder="Text" class="form-control" value="{{ old('last_name') }}">{{ $errors->first('last_name') }}</div>
 				</div>
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Ngày sinh</label></div>
-					<div class="col-12 col-md-9"><input type="date" id="text-input" name="date" placeholder="Text" class="form-control" value="{{ $teacher->date }}"><small class="form-text text-muted"></small></div>
+					<div class="col-12 col-md-9"><input type="date" id="text-input" name="date" placeholder="Text" class="form-control" value="{{ old('date') }}">{{ $errors->first('date') }}</div>
 				</div>
+			
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Số điện thoại</label></div>
-					<div class="col-12 col-md-9"><input type="tex" id="text-input" name="phone" placeholder="Text" class="form-control" value="{{ $teacher->phone }}"><small class="form-text text-muted"></small></div>
+					<div class="col-12 col-md-9"><input type="tex" id="text-input" name="phone" placeholder="Text" class="form-control" value="{{ old('phone') }}">{{ $errors->first('phone') }}</div>
 				</div>
+				<div class="row form-group">
+					<div class="col col-md-3"><label class=" form-control-label">Giới tính</label></div>
+					<div class="col col-md-9">
+						<div class="form-check-inline form-check">
+							<label for="inline-radio1" class="form-check-label ">
+								<input type="radio" id="inline-radio1" name="gender" value="1" class="form-check-input" @if (old('gender')==='1')checked @endif>Nam
+							</label>
+							<label for="inline-radio2" class="form-check-label ">
+								<input type="radio" id="inline-radio2" name="gender" value="0" class="form-check-input" @if (old('gender')==='0')checked @endif>Nữ
+							</label>
+							{{ $errors->first('gender') }}
+							{{-- <label for="inline-radio3" class="form-check-label ">
+								<input type="radio" id="inline-radio3" name="inline-radios" value="option3" class="form-check-input">Three
+							</label> --}}
+						</div>
+					</div>
+				</div>
+				
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="email-input" class=" form-control-label">Email</label></div>
-					<div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Nhập Email" class="form-control" value="{{ $teacher->email }}" readonly="readonly"><small class="help-block form-text">Please enter your email</small></div>
-				</div>
-				<div class="row form-group">
-					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tài khoản</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="user" placeholder="Text" class="form-control" value="{{ $teacher->user }}" readonly="readonly"><small class="form-text text-muted"></small></div>
-				</div>
-				<div class="row form-group">
-					<div class="col col-md-3"><label for="password-input" class=" form-control-label">Mật khẩu</label></div>
-					<div class="col-12 col-md-9"><input type="password" id="password-input" name="password" placeholder="Password" class="form-control" value="{{ $teacher->password }}"><small class="help-block form-text">Please enter a complex password</small></div>
-				</div>
-				<div class="row form-group">
-					<div class="col col-md-3"><label for="password-input" class=" form-control-label">Địa chỉ</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="password-input" name="address" placeholder="Địa chỉ" class="form-control" value="{{ $teacher->address }}"><small class="help-block form-text">Please enter a complex password</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="email-input" name="email" placeholder="Nhập Email" class="form-control" value="{{ old('email') }}">{{ $errors->first('email') }}</div>
 				</div>
 				{{-- <div class="row form-group">
-					<div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Địa chỉ</label></div>
-					<div class="col-12 col-md-9"><textarea name="address" id="textarea-input" rows="9"  class="form-control" value="{{ $teacher->address }}"></textarea></div>
+					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tài khoản</label></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="user" placeholder="Text" class="form-control"><small class="form-text text-muted"></small></div>
 				</div> --}}
+
+				<div class="row form-group">
+					<div class="col col-md-3"><label for="password-input" class=" form-control-label">Mật khẩu</label></div>
+					<div class="col-12 col-md-9"><input type="password" id="password-input" name="password" placeholder="Password" class="form-control">{{ $errors->first('password') }}</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Địa chỉ</label></div>
+					<div class="col-12 col-md-9"><textarea name="address" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ old('address') }}</textarea>{{ $errors->first('address') }}</div>
+				</div>
 				{{-- <div class="row form-group">
 					<div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
 					<div class="col-12 col-md-9">
@@ -94,38 +110,7 @@
 						</div>
 					</div>
 				</div> --}}
-				<div class="row form-group">
-					<div class="col col-md-3"><label class=" form-control-label">Giới tính</label></div>
-					<div class="col col-md-9">
-						<div class="form-check-inline form-check">
-							<label for="inline-radio1" class="form-check-label ">
-								<input type="radio" id="inline-radio1" name="gender" value="1" class="form-check-input"
-									@php
-										if (($teacher->gender)==1) {
-											echo "checked";
-										}
-									@endphp
-
-								/>Nam
-							</label>
-							<label for="inline-radio2" class="form-check-label ">
-								<input type="radio" id="inline-radio2" name="gender" value="0" class="form-check-input"
-								@php
-									if (($teacher->gender)==0) {
-										echo "checked";
-									}
-								@endphp
-
-								>Nữ
-							</label>
-		
-
-							{{-- <label for="inline-radio3" class="form-check-label ">
-								<input type="radio" id="inline-radio3" name="inline-radios" value="option3" class="form-check-input">Three
-							</label> --}}
-						</div>
-					</div>
-				</div>
+				
 				
 				
 				{{-- <div class="row form-group">

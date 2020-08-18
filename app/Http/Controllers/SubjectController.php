@@ -7,6 +7,7 @@ use App\Models\Discipline;
 use App\Models\Teacher;
 use DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubjectRequest;
 
 class SubjectController extends Controller {
 
@@ -39,7 +40,7 @@ class SubjectController extends Controller {
          'disciplines' => $disciplines,
      ]);
   }
-    public function process_insert_subject(Request $rq) {
+    public function process_insert_subject(SubjectRequest $rq) {
 
       Subject::create($rq->all());
 
@@ -66,7 +67,7 @@ public function view_update_subject($id){
  ]);
 
 }
-public function process_update_subject(Request $rq,$id){
+public function process_update_subject(SubjectRequest $rq,$id){
    $name    = $rq->name;
    $time   = $rq->time;
    $id_discipline=$rq->id_discipline;

@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Teacher;
-use App\Imports\TeacherImport;
-use Excel;
+use App\Http\Requests\TeacherRequest;
 
 class TeacherController extends Controller
 {
@@ -31,20 +30,12 @@ class TeacherController extends Controller
     public function view_insert_teacher(){
     	return view('teacher.insert');
     }
-    public function process_insert_teacher(Request $rq){
+    public function process_insert_teacher(TeacherRequest $rq){
     	
         
         Teacher::create($rq->all()); 
 
     	return redirect()->route('teacher.show_teacher');
-
-    }
-    public function view_insert_teacher_excel(){
-        return view('teacher.view_insert_teacher_excel');
-    }
-    public function process_insert_teacher_excel(Request $rq){
-          Excel::import(new TeacherImport, $rq->file('excel_teacher')->path());
-          return redirect()->route('teacher.show_teacher');
 
     }
     public function delete($id)
@@ -63,13 +54,13 @@ class TeacherController extends Controller
     	]);
 
     }
-    public function process_update_teacher(Request $rq,$id){
+    public function process_update_teacher(TeacherRequest $rq,$id){
         $first_name    = $rq->first_name;
         $last_name    = $rq->last_name;
         $date    = $rq->date;
         $address = $rq->address;
         $gender  = $rq->gender;
-        // $email   = $rq->email;
+        $email   = $rq->email;
         $phone   = $rq->phone;
         
         $password = $rq->password;
@@ -79,7 +70,7 @@ class TeacherController extends Controller
     		'date'=> $date,
     		'address'=> $address,
     		'gender'=> $gender,
-            // 'email' => $email,
+            'email' => $email,
             'phone' => $phone,
            
             'password' => $password,

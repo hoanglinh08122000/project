@@ -8,7 +8,7 @@ use App\Models\Discipline;
 use DB;
 use App\Models\Course;
 use App\Models\Classs;
-
+use App\Http\Requests\ClassRequest;
 
 
 class ClassController extends Controller
@@ -40,7 +40,7 @@ class ClassController extends Controller
 			'disciplines' => $disciplines,
 		]);
 	}
-	public function process_insert_class(Request $rq) {
+	public function process_insert_class(ClassRequest $rq) {
 
 		Classs::create($rq->all());
 
@@ -77,7 +77,7 @@ class ClassController extends Controller
 		]);
 
 	}
-	public function process_update_class(Request $rq,$id){
+	public function process_update_class(ClassRequest $rq,$id){
 		$name    = $rq->name;
 		
 		$id_discipline=$rq->id_discipline;

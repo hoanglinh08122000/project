@@ -11,8 +11,8 @@
 
 
 				<div class="row form-group">
-					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small>
+					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên Lớp</label></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control" value="{{ old('name') }}">{{ $errors->first('name') }}
 					</div>
 				</div>
 				

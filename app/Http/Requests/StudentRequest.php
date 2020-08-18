@@ -24,9 +24,9 @@ class StudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'full_name' =>  'required|regex:[A-Za-z]',
-            'last_name' =>  'required|regex:[A-Za-z]',
-            'email' => 'required|email|unique:email',
+            'first_name' =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
+            'last_name' =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
+            'email' => 'required|email',
             'date' => 'required',
             'address' => 'required' ,
             'phone' => 'required|numeric|regex:[0[0-9]{9}$]',
@@ -39,19 +39,20 @@ class StudentRequest extends FormRequest
     {
         return [
             'required' => 'Vui lòng điền :attribute',
-            'full_name.regex' => ':attribute phải điền bằng chữ cái',
+            'first_name.regex' => ':attribute phải điền bằng chữ cái',
             'last_name.regex' => ':attribute phải điền bằng chữ cái',
             'phone' => 'Vui lòng điền :attribute',
             'phone.numeric' => ':attribute phải được điền bằng số',
             'phone.regex' => ':attribute phải có 10 chữ số, bắt đầu từ số 0',
-            'email' => 'Vui lòng điền :attribute',
+            'email.email' => 'Vui lòng nhập đúng định dạng email (...@gmail.com)',
+            // 'email.unique' => ':attribute đã tồn tại',
             'password.min' => ':attribute tối thiểu phải có 8 ký tự',
         ];
     }
     public function attributes()
     {
         return [
-            'full_name' => 'Họ',
+            'first_name' => 'Họ',
             'last_name' => 'Tên',
             'email' => 'Email',
             'date' => 'Ngày sinh',

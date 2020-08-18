@@ -4,49 +4,44 @@
 	
 	<div class="card"  >
 		<div class="card-header" >
-			<strong>Thêm sinh viên</strong> 
+			<strong>Sửa thông tin sinh viên</strong> 
 		</div>
 		<div class="card-body card-block" >
 			<form action="{{ route('students.process_update_students',['id'=>$students->id]) }}" method="post" enctype="multipart/form-data" class="form-horizontal">
 				@csrf
 				
-				{{-- <div class="row form-group">
-					<div class="col col-md-3"><label class=" form-control-label">Tên</label></div>
-					<div class="col-12 col-md-9">
-						<p class="form-control-static">name</p>
-					</div>
-				</div> --}}
+				
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Họ</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control" value="{{ $students->first_name }}"><small class="form-text text-muted">This is a help text</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="first_name" placeholder="Text" class="form-control" value="{{ $students->first_name }}">{{ $errors->first('first_name') }}</div>
 				</div>
-				<div class="row form-group">
+					<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control" value="{{ $students->last_name }}"><small class="form-text text-muted">This is a help text</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="last_name" placeholder="Text" class="form-control" value="{{ $students->last_name }}">{{ $errors->first('last_name') }}</div>
 				</div>
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Ngày sinh</label></div>
-					<div class="col-12 col-md-9"><input type="date" id="text-input" name="date" placeholder="Text" class="form-control" value="{{ $students->date }}"><small class="form-text text-muted"></small></div>
+					<div class="col-12 col-md-9"><input type="date" id="text-input" name="date" placeholder="Text" class="form-control" value="{{ $students->date }}">{{ $errors->first('date') }}</div>
 				</div>
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Số điện thoại</label></div>
-					<div class="col-12 col-md-9"><input type="tex" id="text-input" name="phone" placeholder="Text" class="form-control" value="{{ $students->phone }}"><small class="form-text text-muted"></small></div>
+					<div class="col-12 col-md-9"><input type="tex" id="text-input" name="phone" placeholder="Text" class="form-control" value="{{ $students->phone }}">{{ $errors->first('phone') }}</div>
 				</div>
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="email-input" class=" form-control-label">Email</label></div>
-					<div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Nhập Email" class="form-control" value="{{ $students->email }}" readonly="readonly"><small class="help-block form-text">Please enter your email</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="email-input" name="email" placeholder="Nhập Email" class="form-control" value="{{ $students->email }}" readonly="readonly">{{ $errors->first('email') }}</div>
 				</div>
-				{{-- <div class="row form-group">
+				<!-- <div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tài khoản</label></div>
 					<div class="col-12 col-md-9"><input type="text" id="text-input" name="user" placeholder="Text" class="form-control" value="{{ $students->user }}" readonly="readonly"><small class="form-text text-muted"></small></div>
-				</div> --}}
+				</div> -->
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="password-input" class=" form-control-label">Mật khẩu</label></div>
-					<div class="col-12 col-md-9"><input type="password" id="password-input" name="password" placeholder="Password" class="form-control" value="{{ $students->password }}"><small class="help-block form-text">Please enter a complex password</small></div>
+					<div class="col-12 col-md-9"><input type="password" id="password-input" name="password" placeholder="Password" class="form-control" value="{{ $students->password }}">{{ $errors->first('password') }}</div>
 				</div>
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="password-input" class=" form-control-label">Địa chỉ</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="password-input" name="address" placeholder="Địa chỉ" class="form-control" value="{{ $students->address }}"><small class="help-block form-text">Please enter a complex password</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="password-input" name="address" placeholder="Địa chỉ" class="form-control" value="{{ $students->address }}">{{ $errors->first('address') }}</div>
 				</div>
 				{{-- <div class="row form-group">
 					<div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Địa chỉ</label></div>

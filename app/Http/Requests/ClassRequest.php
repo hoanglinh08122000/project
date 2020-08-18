@@ -1,10 +1,10 @@
-<?php
+regex<?php
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DisciplineRequest extends FormRequest
+class ClassRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class DisciplineRequest extends FormRequest
     {
         return [
             'name' =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
-            'name_collapse' =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
         ];
     }
     public function messages()
@@ -33,14 +32,12 @@ class DisciplineRequest extends FormRequest
         return [
             'required' => 'Vui lòng điền :attribute',
             'name.regex' => ':attribute phải điền bằng chữ cái',
-            'name_collapse.regex' => ':attribute phải điền bằng chữ cái',
         ];
     }
     public function attributes()
     {
         return [
-            'name' => 'Tên Khóa Học',
-            'name_collapse' => 'Tên rút gọn',
+            'name' => 'Tên Lớp',
         ];
     }
 }

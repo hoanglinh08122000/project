@@ -7,9 +7,19 @@ use DB;
 use App\Models\Students;
 use App\Imports\StudentImport;
 use Excel;
+use App\Http\Requests\StudentRequest;
 
 class StudentsController extends Controller
-{
+{   
+    public function index_students(Request $rq){
+        $search = $rq->search;
+        $array_list = Students::where('last_name','like',"%$search%")->paginate(10);
+        return view('Students.index_students',[
+         'array_list'=> $array_list,
+         'search'=> $search
+        ]);
+
+    }
 	public function show_students(Request $rq){
         $search = $rq->search;
     	$array_list = Students::where('last_name','like',"%$search%")->paginate(15);
@@ -22,7 +32,7 @@ class StudentsController extends Controller
     public function view_insert_students(){
     	return view('students.view_insert_students');
     }
-    public function process_insert_students(Request $rq){
+    public function process_insert_students(StudentRequest $rq){
     	
         
         Students::create($rq->all()); 
@@ -35,7 +45,6 @@ class StudentsController extends Controller
     }
     public function process_insert_students_excel(Request $rq){
           Excel::import(new StudentImport, $rq->file('excel_student')->path());
-          return redirect()->route('students.show_students');
 
     }
     public function delete($id)
@@ -54,21 +63,23 @@ class StudentsController extends Controller
     	]);
 
     }
-    public function process_update_students(Request $rq,$id){
-        $name    = $rq->name;
+    public function process_update_students(StudentRequest $rq,$id){
+        $first_name    = $rq->first_name;
+        $last_name    = $rq->last_name;
         $date    = $rq->date;
         $address = $rq->address;
         $gender  = $rq->gender;
-        // $email   = $rq->email;
+        $email   = $rq->email;
         $phone   = $rq->phone;
         
         $password = $rq->password;
     	DB::table('students')->where('id',$id)->update([
-    		'name'=> $name,
+    		'first_name'=> $first_name,
+            'last_name'=> $last_name,
     		'date'=> $date,
     		'address'=> $address,
     		'gender'=> $gender,
-            // 'email' => $email,
+            'email' => $email,
             'phone' => $phone,
            
             'password' => $password,

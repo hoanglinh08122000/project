@@ -26,6 +26,6 @@ class AssignmentController extends Controller
 			'subjects' => $subjects,
 			'teachers' => $teachers
 		]);
-	}
 
+	}
 }

@@ -24,32 +24,41 @@ class TeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|name',
-            'email' => 'required|email|unique:email',
+            'first_name' =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
+            'last_name'  =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
+            'email' => 'required|email',
             'date' => 'required|date',
-            'phone' => 'required|phone',
-            'password' => 'required|password',
+            'phone' => 'required|numeric|regex:[0[0-9]{9}$]',
+            'password' => 'required|min:8',
+            'address' => 'required',
+            'gender' => 'required',
         ];
     }
     public function messages()
     {
         return [
             'required' => 'Vui lòng điền :attribute',
-            'email' => 'Vui lòng điền :attribute',
+            'email.email' => 'Vui lòng nhập đúng định dạng email (...@gmail.com)',
             'date' => 'Vui lòng điền :attribute',
             'phone' => 'Vui lòng điền :attribute',
-            'password' => 'Vui lòng điền :attribute',
-            'name' => 'Vui lòng điền đầy đủ :attribute',
+            'phone.numeric' => ':attribute phải được điền bằng số',
+            'phone.regex' => ':attribute phải có 10 chữ số, bắt đầu từ số 0',
+            'password.min' => ':attribute tối thiểu phải có 8 ký tự',
+            'last_name.regex' => ':attribute phải điền bằng chữ cái',
+            'first_name.regex' => ':attribute phải điền bằng chữ cái',
         ];
     }
     public function attributes()
     {
         return [
-            'name' => 'tên',
-            'email' => 'email',
-            'date' => 'ngày sinh',
-            'password' => 'mật khẩu',
-            'phone' => 'số điện thoại',
+            'first_name' => 'Họ',
+            'last_name' => 'Tên',
+            'email' => 'Email',
+            'date' => 'Ngày sinh',
+            'password' => 'Mật khẩu',
+            'phone' => 'Số điện thoại',
+            'address' => 'Địa chỉ',
+            'gender' => 'Giới tính',
         ];
     }
 }

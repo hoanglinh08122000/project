@@ -12,11 +12,11 @@
 
 				<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên</label></div>
-					<div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control" value="{{ $subject->name }}"><small class="form-text text-muted">This is a help text</small></div>
+					<div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control" value="{{ $subject->name }}">{{ $errors->first('name') }}</div>
 				</div>
 					<div class="row form-group">
 					<div class="col col-md-3"><label for="text-input" class=" form-control-label">Thời gian học</label></div>
-					<div class="col-12 col-md-9"><input type="number" id="text-input" name="time" placeholder="Text" class="form-control" value="{{ $subject->time }}"><small class="form-text text-muted">This is a help text</small></div>
+					<div class="col-12 col-md-9"><input type="number" id="text-input" name="time" placeholder="Text" class="form-control" value="{{ $subject->time }}">{{ $errors->first('time') }}</div>
 				</div>
             
                 <div class="row form-group">

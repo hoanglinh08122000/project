@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Discipline;
+use App\Http\Requests\DisciplineRequest;
 
 class DisciplineController extends Controller
 {
@@ -29,7 +30,7 @@ class DisciplineController extends Controller
     public function view_insert_discipline(){
     	return view('discipline.insert');
     }
-    public function process_insert_discipline(Request $rq){
+    public function process_insert_discipline(DisciplineRequest $rq){
     	
         
         Discipline::create($rq->all()); 
@@ -53,7 +54,7 @@ class DisciplineController extends Controller
     	]);
 
     }
-    public function process_update_discipline(Request $rq,$id){
+    public function process_update_discipline(DisciplineRequest $rq,$id){
         $name    = $rq->name;
         $name_collapse = $rq->name_collapse;
         DB::table('discipline')->where('id',$id)->update([

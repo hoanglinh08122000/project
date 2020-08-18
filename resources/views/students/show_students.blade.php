@@ -48,9 +48,9 @@
 				<td>
 					@php
 					if ($students->gender==1){
-						echo "boy";
+						echo "Nam";
 					}else {
-						echo "girl";
+						echo "Nữ";
 					}
 
 					@endphp

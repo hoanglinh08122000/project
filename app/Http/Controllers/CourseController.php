@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Course;
+use App\Http\Requests\CourseRequest;
 
 class CourseController extends Controller
 {
@@ -29,7 +30,7 @@ class CourseController extends Controller
     public function view_insert_course(){
     	return view('course.insert');
     }
-    public function process_insert_course(Request $rq){
+    public function process_insert_course(CourseRequest $rq){
     	
         
         Course::create($rq->all()); 
@@ -53,7 +54,7 @@ class CourseController extends Controller
     	]);
 
     }
-    public function process_update_Course(Request $rq,$id){
+    public function process_update_Course(CourseRequest $rq,$id){
         $name    = $rq->name;
         $name_collapse= $rq->name_collapse;
         DB::table('course')->where('id',$id)->update([
