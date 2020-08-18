@@ -48,8 +48,6 @@ route::group(['middleware' => 'CheckLogin'], function () {
 		route::get("", "$controller@show_teacher")->name("show_teacher");
 		route::get("view_insert_teacher", "$controller@view_insert_teacher")->name("view_insert_teacher");
 		route::post("process_insert_teacher", "$controller@process_insert_teacher")->name("process_insert_teacher");
-		route::get("view_insert_teacher_excel", "$controller@view_insert_teacher_excel")->name("view_insert_teacher_excel");
-		route::post("process_insert_teacher_excel", "$controller@process_insert_teacher_excel")->name("process_insert_teacher_excel");
 		route::get("delete/{id}", "$controller@delete")->name("delete");
 		route::get("view_update_teacher/{id}", "$controller@view_update_teacher")->name("view_update_teacher");
 		route::post("process_update_teacher/{id}", "$controller@process_update_teacher")->name("process_update_teacher");
@@ -130,16 +128,26 @@ route::group(['middleware' => 'CheckLogin'], function () {
 	route::group(["prefix" => "ajax", "as" => "ajax."], function () use ($controller) {
 
 		route::get("assignment_teacher", "$controller@assignment_teacher")->name("assignment_teacher");
-		route::get("assignment_teacher_course_class", "$controller@assignment_teacher_course_class")->name("assignment_teacher_course_class");
-		
+		// route::get("view_insert_class_under_student", "$controller@view_insert_class_under_student")->name("view_insert_class_under_student");
+
+		// route::post("process_insert_class", "$controller@process_insert_class")->name("process_insert_class");
+		// route::get("delete/{id}","$controller@delete")->name("delete");
+		// route::get("show_edit", "$controller@show_edit")->name("show_edit");
+		// route::get("view_update_class/{id}","$controller@view_update_class")->name("view_update_class");
+		// route::post("process_update_class/{id}","$controller@process_update_class")->name("process_update_class");
 	});
 
-	// diem danh
-	
-	$controller = "ListpointsController";
-	route::group(["prefix" => "listpoints", "as" => "listpoints."], function () use ($controller) {
+	//admin
+	$controller = "AdminController";
+	route::group(["prefix" => "admin", "as" => "admin."], function () use ($controller) {
 		
-		route::get("view_listpoints", "$controller@view_listpoints")->name("view_listpoints");
-		
+		route::get("index_admin", "$controller@index_admin")->name("index_admin");
+		route::get("", "$controller@show_admin")->name("show_admin");
+		route::get("view_insert_admin", "$controller@view_insert_admin")->name("view_insert_admin");
+		route::post("process_insert_admin", "$controller@process_insert_admin")->name("process_insert_admin");
+		route::get("delete/{id}", "$controller@delete")->name("delete");
+		route::get("view_update_admin/{id}", "$controller@view_update_admin")->name("view_update_admin");
+		route::post("process_update_admin/{id}", "$controller@process_update_admin")->name("process_update_admin");
+
 	});
 });
