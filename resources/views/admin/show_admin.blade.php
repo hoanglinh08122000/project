@@ -16,7 +16,7 @@
 		<th scope="col" style="text-align: center;">Điện thoại</th>
 		
 		<th scope="col" style="text-align: center;">Email</th>
-		
+		<th></th>
 
 		
 		</tr>
@@ -56,7 +56,11 @@
 				<td style="text-align: center;">
 					{{$admin->email}}
 				</td>
-				
+				<td>
+					<a href="{{ route('admin.view_change_password_admin',['id' => $admin->id]) }}">
+						Thay mat khau
+					</a>
+				</td>
 				
 
 			</tr>

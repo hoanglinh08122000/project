@@ -146,8 +146,8 @@ route::group(['middleware' => 'CheckLogin'], function () {
 		route::get("view_insert_admin", "$controller@view_insert_admin")->name("view_insert_admin");
 		route::post("process_insert_admin", "$controller@process_insert_admin")->name("process_insert_admin");
 		route::get("delete/{id}", "$controller@delete")->name("delete");
-		route::get("view_update_admin/{id}", "$controller@view_update_admin")->name("view_update_admin");
-		route::post("process_update_admin/{id}", "$controller@process_update_admin")->name("process_update_admin");
+		route::get("view_change_password_admin/{id}", "$controller@view_change_password_admin")->name("view_change_password_admin");
+		route::post("process_change_password_admin/{id}", "$controller@process_change_password_admin")->name("process_change_password_admin");
 
 	});
 });

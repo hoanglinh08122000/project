@@ -27,4 +27,23 @@ class AdminController extends Controller
         ]);
 
     }
+    public function view_change_password_admin($id){
+        
+        $admin= Admin::find($id);
+        return view('admin.view_change_password_admin',[
+            'admin'=> $admin,
+        ]);
+
+    }
+    public function process_change_password_admin(AdminRequest $request,$id)
+    {
+        $password = $rq->password;
+        DB::table('admin')->where('id',$id)->update([
+           
+            'password' => $password,
+        ]);
+
+       
+        return redirect()->route('admin.show_admin');
+    }
 }

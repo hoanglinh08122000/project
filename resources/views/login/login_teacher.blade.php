@@ -50,11 +50,12 @@
                         
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email" name="email">
+                            <input type="text" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">{{ $errors->first('email') }}
                         </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                <input type="password" class="form-control" placeholder="Password" name="password" value="{{ old('password') }}">
+                                {{ $errors->first('password') }}
                         </div>
                                 
                                 <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>

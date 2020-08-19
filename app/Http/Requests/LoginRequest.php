@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClassRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,20 +24,22 @@ class ClassRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>  'required|regex:/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
         ];
     }
     public function messages()
     {
         return [
             'required' => 'Vui lòng điền :attribute',
-            'name.regex' => ':attribute phải điền bằng chữ cái',
+            'email.email' => 'Vui lòng nhập đúng định dạng email (...@gmail.com)',
         ];
     }
     public function attributes()
     {
         return [
-            'name' => 'Tên Lớp',
+            'email' => 'Email',
+            'password' => 'Mật khẩu',
         ];
     }
 }

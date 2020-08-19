@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use Hash;
 use Illuminate\Http\Request;
 use Session;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller {
 	public function login() {
@@ -56,7 +57,7 @@ class LoginController extends Controller {
 	public function login_teacher() {
 		return view('login.login_teacher2');
 	}
-	public function process_login_teacher(Request $rq) {
+	public function process_login_teacher(LoginRequest $rq) {
 		$teacher = Teacher::where('email', $rq->email)->first();
 
 		if (isset($teacher) && Hash::check($rq->password, $teacher->password)) {
@@ -68,7 +69,7 @@ class LoginController extends Controller {
 			return redirect()->route('index');
 
 		} else {
-			return redirect()->route('login')->with('error', 'Sai');;
+			return view('login.login_teacher2')->with('error', 'Sai');;
 		}
 	}
 
