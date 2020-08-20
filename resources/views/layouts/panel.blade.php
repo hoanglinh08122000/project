@@ -85,12 +85,12 @@
                 </li>
                 
                 <h3 class="menu-title">Điểm danh</h3>
-                <li class="{{-- menu-item-has-children dropdown --}}">
+                <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Điểm danh</a>
-                    {{-- <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-table"></i><a href="{{ route('listpoint.show_listpoint') }}">Hien thi diem danh</a></li>
                         <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
-                    </ul> --}}
+                    </ul>
                 </li>
                 {{-- <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>

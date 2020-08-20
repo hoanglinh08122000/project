@@ -128,6 +128,11 @@ route::group(['middleware' => 'CheckLogin'], function () {
 	route::group(["prefix" => "ajax", "as" => "ajax."], function () use ($controller) {
 
 		route::get("assignment_teacher", "$controller@assignment_teacher")->name("assignment_teacher");
+		route::get("assignment_teacher_course_class", "$controller@assignment_teacher_course_class")->name("assignment_teacher_course_class");
+		route::get("select_class", "$controller@select_class")->name("select_class");
+		route::get("select_subject", "$controller@select_subject")->name("select_subject");
+		route::get("show_students", "$controller@show_students")->name("show_students");
+		// route::get("assignment_teacher", "$controller@assignment_teacher")->name("assignment_teacher");
 		// route::get("view_insert_class_under_student", "$controller@view_insert_class_under_student")->name("view_insert_class_under_student");
 
 		// route::post("process_insert_class", "$controller@process_insert_class")->name("process_insert_class");
@@ -148,6 +153,20 @@ route::group(['middleware' => 'CheckLogin'], function () {
 		route::get("delete/{id}", "$controller@delete")->name("delete");
 		route::get("view_change_password_admin/{id}", "$controller@view_change_password_admin")->name("view_change_password_admin");
 		route::post("process_change_password_admin/{id}", "$controller@process_change_password_admin")->name("process_change_password_admin");
+
+	});
+
+	//listpoint
+	$controller = "ListpointController";
+	route::group(["prefix" => "listpoint", "as" => "listpoint."], function () use ($controller) {
+		
+		route::get("index_listpoint", "$controller@index_listpoint")->name("index_listpoint");
+		route::get("", "$controller@show_listpoint")->name("show_listpoint");
+		route::get("process_listpoint", "$controller@process_listpoint")->name("process_listpoint");
+		route::post("process_insert_listpoint", "$controller@process_insert_listpoint")->name("process_insert_listpoint");
+		route::get("delete/{id}", "$controller@delete")->name("delete");
+		route::get("view_change_password_listpoint/{id}", "$controller@view_change_password_listpoint")->name("view_change_password_listpoint");
+		route::post("process_change_password_listpoint/{id}", "$controller@process_change_password_listpoint")->name("process_change_password_listpoint");
 
 	});
 });

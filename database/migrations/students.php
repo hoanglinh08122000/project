@@ -23,8 +23,13 @@ class Students extends Migration
             $table->string('phone',15);
             $table->string('email',50);
             $table->boolean('gender');
-            // $table->string('user',50);
             $table->string('password',250);
+            $table->integer('id_class')->unsigned();
+            $table->integer('id_disclipline')->unsigned();
+            $table->integer('id_course')->unsigned();
+            $table->foreign('id_class')->references('id')->on('class');
+            $table->foreign('id_disclipline')->references('id')->on('disclipline');
+            $table->foreign('id_course')->references('id')->on('course');
             
         });
     }

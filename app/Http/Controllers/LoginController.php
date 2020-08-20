@@ -57,7 +57,7 @@ class LoginController extends Controller {
 	public function login_teacher() {
 		return view('login.login_teacher2');
 	}
-	public function process_login_teacher(LoginRequest $rq) {
+	public function process_login_teacher(Request $rq) {
 		$teacher = Teacher::where('email', $rq->email)->first();
 
 		if (isset($teacher) && Hash::check($rq->password, $teacher->password)) {
