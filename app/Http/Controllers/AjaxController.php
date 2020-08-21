@@ -37,10 +37,16 @@ class AjaxController extends Controller
     }
     public function show_students(Request $rq){
         $id = $rq->get('id');
-        $array_students= Students::where('id_class','id_discipline','id_course',$id)->get();
+        $array_students= Students::where('id_discipline',$id)->get();
 
         return $array_students;
     }
+    // public function show_id(Request $rq){
+    //     $id = $rq->get('id');
+    //     $array_students= Students::where('id_discipline',$id)->get();
+
+    //     return $array_students;
+    // }
 
 
 }

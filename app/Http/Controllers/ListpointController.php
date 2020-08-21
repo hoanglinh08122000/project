@@ -9,6 +9,7 @@ use App\Models\Classs;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Listpoint;
+use App\Models\Students;
 
 class ListpointController extends Controller
 {
@@ -18,12 +19,14 @@ class ListpointController extends Controller
 		$classs=Classs::get();
 		$subjects=Subject::get();
 		$teachers=Teacher::get();
+		$students=Students::get();
 
 		return view('listpoint.show_listpoint',[
 			'courses'=> $courses,
 			'disciplines'=> $disciplines,
 			'classs'=> $classs,
 			'subjects' => $subjects,
+			'students' => $students,
 			'teachers' => $teachers
 		]);
 

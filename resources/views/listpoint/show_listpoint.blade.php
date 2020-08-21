@@ -42,7 +42,7 @@
 			<div class="row form-group">
 				<div class="col col-md-3"><label for="select" class=" form-control-label">Lớp</label></div>
 				<div class="col-12 col-md-9">
-					<select name="id_class" class="form-control" id="select_class">
+					<select name="id" class="form-control" id="select_class">
 						
 					</select>
 				</div>
@@ -58,26 +58,26 @@
 				</div>
 
 			</div>
-<table class="table">
-	<tr>
-		<th scope="col" style="text-align: center;">Tên</th>
-		<th></th>
-		<th></th>
 
-		
-		</tr>
-
-		<tbody>
-			<tr>
-				<tdscope="col" style="text-align: center;">
+			<!-- <div class="row form-group">
+				<div class="col col-md-3"><label for="select" class=" form-control-label">Sinh vien</label></div>
+				<div class="col-12 col-md-9">
 					<select name="id" class="form-control" id="show_students">
 						
 					</select>
-				</td>
-                <th></th>
-		        <th></th>
-			</tr>
+				</div>
 
+			</div> -->
+<table class="table">
+	<tr>
+		<th width="8%" align="center">ID</th>
+		<th width="20%" align="center">Tên</th>
+		<th width="72%" align="center"></th>
+    </tr>
+
+		<tbody id="show_students">
+
+        </tbody>
 </table>
 			<button type="submit" class="btn btn-primary btn-sm" >
 				<i class="fa fa-dot-circle-o"></i> Submit
@@ -142,8 +142,8 @@
 			 			{
 			 				
 			 				$("#select_class").append(`
-			 					<option value='${this.id}'>
-									${this.name}
+			 					<option value='${this.id}' selected>
+                                    ${this.name} 
 			 					</option>`)
 			 			})
 			 		})
@@ -158,8 +158,8 @@
 		</script>
         <!-- students -->
 		<script>
-			 $(document).ready(function() {
-			 	$("#select_discipline","#select_class","#select_course").change(function(){
+			$(document).ready(function() {
+			 	$("#select_discipline").change(function(){
 			 		var id = $(this).val();
 			 		$("#show_students").html('');
 			 		$.ajax({
@@ -167,15 +167,26 @@
 			 			type: 'GET',
 			 			dataType: 'json',
 			 			data: {id : id},
+			 			columns: [
+                            { data: 'id' },
+                            { data: 'last_name' },
+                        ]                    
 			 		})
 			 		.done(function(response) {
 			 			$(response).each(function()
 			 			{
 			 				
 			 				$("#show_students").append(`
-			 					<option value='${this.id}'>
-									${this.full_name}
-			 					</option>`)
+	<tr>
+	<th width="8%" align="center">${this.id}</th> 
+	<th width="20%" align="center">${this.first_name} ${this.last_name}</th>
+	<th width="72%" align="center" style="text-align: center;">
+        <input type="radio" name="status" value="1">Đi Học &emsp;
+        <input type="radio" name="status" value="0">Nghỉ Học &emsp;
+        <input type="radio" name="status" value="2">Có Phép
+	</th>
+	</tr>
+		 					`)
 			 			})
 			 		})
 			 		// .fail(function() { 
@@ -185,7 +196,7 @@
 			 		
 			 		
 			 	})
-			 });
+			 }); 
 		</script>
 	@endpush
 

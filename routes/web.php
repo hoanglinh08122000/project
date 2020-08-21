@@ -131,6 +131,7 @@ route::group(['middleware' => 'CheckLogin'], function () {
 		route::get("assignment_teacher_course_class", "$controller@assignment_teacher_course_class")->name("assignment_teacher_course_class");
 		route::get("select_class", "$controller@select_class")->name("select_class");
 		route::get("select_subject", "$controller@select_subject")->name("select_subject");
+		route::get("show_id", "$controller@show_id")->name("show_id");
 		route::get("show_students", "$controller@show_students")->name("show_students");
 		// route::get("assignment_teacher", "$controller@assignment_teacher")->name("assignment_teacher");
 		// route::get("view_insert_class_under_student", "$controller@view_insert_class_under_student")->name("view_insert_class_under_student");
