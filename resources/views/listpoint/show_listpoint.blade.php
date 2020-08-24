@@ -3,7 +3,7 @@
 
 <div class="card"  >
 	<div class="card-header" >
-		<strong>Danh sach diem danh</strong> 
+		<strong>Danh sách điểm danh</strong> 
 	</div>
 	<div class="card-body card-block" >
 		<form action="{{ route('listpoint.process_listpoint') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -27,7 +27,7 @@
 				<div class="col col-md-3"><label for="select" class=" form-control-label">Ngành</label></div>
 				<div class="col-12 col-md-9">
 					<select name="id" class="form-control" id="select_discipline">
-						<option disabled selected> Chọn ngành</option>}
+						<option disabled selected>Chọn ngành</option>}
 						
 						@foreach ($disciplines  as $discipline)
 						<option value="{{ $discipline->id }}">
@@ -43,7 +43,7 @@
 				<div class="col col-md-3"><label for="select" class=" form-control-label">Lớp</label></div>
 				<div class="col-12 col-md-9">
 					<select name="id" class="form-control" id="select_class">
-						
+						    Chọn Lớp
 					</select>
 				</div>
 
@@ -53,7 +53,7 @@
 				<div class="col col-md-3"><label for="select" class=" form-control-label">Môn</label></div>
 				<div class="col-12 col-md-9">
 					<select name="id" class="form-control" id="select_subject">
-						
+						    Chọn Môn
 					</select>
 				</div>
 
@@ -70,15 +70,16 @@
 			</div> -->
 <table class="table">
 	<tr>
-		<th width="8%" align="center">ID</th>
-		<th width="20%" align="center">Tên</th>
-		<th width="72%" align="center"></th>
+		<th width="8%" align="center" style="text-align: center;">ID</th>
+		<th width="20%" align="center" style="text-align: center;">Tên</th>
+		<th width="72%" align="center" style="text-align: center;">Tình Trạng Đi Học</th>
     </tr>
 
 		<tbody id="show_students">
 
         </tbody>
 </table>
+
 			<button type="submit" class="btn btn-primary btn-sm" >
 				<i class="fa fa-dot-circle-o"></i> Submit
 			</button>
@@ -178,12 +179,12 @@
 			 				
 			 				$("#show_students").append(`
 	<tr>
-	<th width="8%" align="center">${this.id}</th> 
+	<th width="8%" style="text-align: center;">${this.id}</th> 
 	<th width="20%" align="center">${this.first_name} ${this.last_name}</th>
 	<th width="72%" align="center" style="text-align: center;">
-        <input type="radio" name="status" value="1">Đi Học &emsp;
-        <input type="radio" name="status" value="0">Nghỉ Học &emsp;
-        <input type="radio" name="status" value="2">Có Phép
+        <input type="radio" name="${this.id}" value="1">  Đi Học &emsp;&emsp;&emsp;
+        <input type="radio" name="${this.id}" value="0">  Nghỉ Học &emsp;&emsp;&emsp;
+        <input type="radio" name="${this.id}" value="2">  Có Phép
 	</th>
 	</tr>
 		 					`)

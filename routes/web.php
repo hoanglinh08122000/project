@@ -131,7 +131,7 @@ route::group(['middleware' => 'CheckLogin'], function () {
 		route::get("assignment_teacher_course_class", "$controller@assignment_teacher_course_class")->name("assignment_teacher_course_class");
 		route::get("select_class", "$controller@select_class")->name("select_class");
 		route::get("select_subject", "$controller@select_subject")->name("select_subject");
-		route::get("show_id", "$controller@show_id")->name("show_id");
+		// route::get("show_id", "$controller@show_id")->name("show_id");
 		route::get("show_students", "$controller@show_students")->name("show_students");
 		// route::get("assignment_teacher", "$controller@assignment_teacher")->name("assignment_teacher");
 		// route::get("view_insert_class_under_student", "$controller@view_insert_class_under_student")->name("view_insert_class_under_student");
@@ -143,17 +143,17 @@ route::group(['middleware' => 'CheckLogin'], function () {
 		// route::post("process_update_class/{id}","$controller@process_update_class")->name("process_update_class");
 	});
 
-	//admin
-	$controller = "AdminController";
-	route::group(["prefix" => "admin", "as" => "admin."], function () use ($controller) {
+	//profile
+	$controller = "ProfileController";
+	route::group(["prefix" => "profile", "as" => "profile."], function () use ($controller) {
 		
-		route::get("index_admin", "$controller@index_admin")->name("index_admin");
-		route::get("", "$controller@show_admin")->name("show_admin");
-		route::get("view_insert_admin", "$controller@view_insert_admin")->name("view_insert_admin");
-		route::post("process_insert_admin", "$controller@process_insert_admin")->name("process_insert_admin");
+		route::get("index_profile", "$controller@index_profile")->name("index_profile");
+		route::get("", "$controller@show_profile")->name("show_profile");
+		route::get("view_insert_profile", "$controller@view_insert_profile")->name("view_insert_profile");
+		route::post("process_insert_profile", "$controller@process_insert_profile")->name("process_insert_profile");
 		route::get("delete/{id}", "$controller@delete")->name("delete");
-		route::get("view_change_password_admin/{id}", "$controller@view_change_password_admin")->name("view_change_password_admin");
-		route::post("process_change_password_admin/{id}", "$controller@process_change_password_admin")->name("process_change_password_admin");
+		route::get("view_change_password_profile/{id}", "$controller@view_change_password_profile")->name("view_change_password_profile");
+		route::post("process_change_password_profile/{id}", "$controller@process_change_password_profile")->name("process_change_password_profile");
 
 	});
 

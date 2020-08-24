@@ -1,20 +1,13 @@
 @extends('layouts.master')
 @section('content')
-
-{{-- <a href="{{ route('admin.view_insert_admin') }}">
-	Add	
-
-</a> --}}
-
 <table class="table">
 	<tr>
-		<th >Id</th>
+		<th scope="col" style="text-align: center;">Id</th>
 		<th scope="col" style="text-align: center;">Tên</th>
-		<th scope="col" style="text-align: center;"> Tuổi</th>
+		<th scope="col" style="text-align: center;">Ngay sinh</th>
 		<th scope="col" style="text-align: center;">Địa chỉ</th>
 		<th scope="col" style="text-align: center;">Giới tính</th>
 		<th scope="col" style="text-align: center;">Điện thoại</th>
-		
 		<th scope="col" style="text-align: center;">Email</th>
 		<th></th>
 
@@ -23,54 +16,43 @@
 
 		<tbody>
 
-
-			@foreach ($array_list as $admin)
 			<tr>
 				<th style="text-align: center;">
-					{{$admin->id}}
+					{{ Session::get('id') }}
 				</td>
 				<td style="text-align: center;">
-					{{$admin->full_name}}
+					{{ Session::get('first_name') }} {{ Session::get('last_name') }}
 				</td>
 				<td style="text-align: center;">
-				    {{ $age = date_diff(date_create($admin->date), date_create('now'))->y}}
+					{{ Session::get('date') }}
 				</td>
-
 				<td style="text-align: center;">
-					{{$admin->address}}
+					{{ Session::get('address') }}
 				</td>
 				<td style="text-align: center;">
 					@php
-					if ($admin->gender==1){
+					if (  Session::get('gender') ==1 ){
 						echo "Nam";
 					}else {
 						echo "Nữ";
 					}
 
 					@endphp
-					
 				</td>
 				<td style="text-align: center;">
-					{{$admin->phone}}
+					{{ Session::get('phone') }}
 				</td>
 				<td style="text-align: center;">
-					{{$admin->email}}
+					{{ Session::get('email') }}
 				</td>
-				<td>
-					<a href="{{ route('admin.view_change_password_admin',['id' => $admin->id]) }}">
-						Thay mat khau
-					</a>
-				</td>
+				<!--  -->
 				
 
 			</tr>
-
-			@endforeach
 			<br>
 	{{-- <input type="search" placeholder="search..." name="search" value="{{ $search }}" style="float:right;border-radius: 10px;">
 	<button type="submit"></button> --}}
 
 </tbody>
 </table>
-{{$array_list->appends(['search' => $search])->links()}}
 @endsection
