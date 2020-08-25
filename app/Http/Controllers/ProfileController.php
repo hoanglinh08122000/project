@@ -6,7 +6,9 @@ use App\Models\Admin;
 use App\Models\Students;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Hash;
 use Session;
+use DB;
 use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller {
@@ -25,50 +27,27 @@ class ProfileController extends Controller {
 	}
 
 	// login admin
-	public function login_admin() {
-		return view('login.login_admin2');
+	public function view_change_password_profile() {
+		return view('profile.view_change_password_profile');
 	}
-	public function process_login_admin(Request $rq) {
-		$admin = Admin::where('email', $rq->email)->first();
-
-		if (isset($admin) && Hash::check($rq->password, $admin->password)) {
-			Session::put('id', $admin->id);
-			Session::put('last_name', $admin->first_name);
-			Session::put('last_name', $admin->last_name);
-			Session::put('level', $admin->level);
-			return redirect()->route('index');
-
-		} else {
-			return redirect()->route('login')->with('error', 'Sai');
+	public function process_change_password_profile(Request $rq,$id) {
+		$password   = $rq->password;
+        $new_password = $rq->new_password;
+        if (isset($teacher) && Hash::check($rq->password, Session::get('password')){
+        DB::table('teacher')->where('id',Session::get('id'))->update([
+			'password' => Hash::make($rq->new_password),
+		]);
+			return redirect()->route('profile.show_profile');
 		}
+		elseif (isset($admin) && Hash::check($rq->password, Session::get('password')){
+		DB::table('admin')->where('id',Session::get('id'))->update([
+			$password -> Hash::make($rq->new_password),
+		]);
+			return redirect()->route('profile.show_profile');
+		}
+
 	}
 
 	// login teacher
-	public function login_teacher() {
-		return view('login.login_teacher2');
-	}
-	public function process_login_teacher(Request $rq) {
-		$teacher = Teacher::where('email', $rq->email)->first();
-
-		if (isset($teacher) && Hash::check($rq->password, $teacher->password)) {
-			Session::put('id', $teacher->id);
-			Session::put('first_name', $teacher->first_name);
-			Session::put('last_name', $teacher->last_name);
-			Session::put('level', $teacher->level);
-
-			return redirect()->route('index');
-
-		} else {
-			return view('login.login_teacher2')->with('error', 'Sai');;
-		}
-	}
-
-	// log out
-	public function logout() {
-		Session::flush();
-
-		return redirect()->route('login')->with('sussess', 'Bye');
-
-	}
-
+	
 }

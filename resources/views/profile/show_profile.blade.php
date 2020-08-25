@@ -4,12 +4,12 @@
 	<tr>
 		<th scope="col" style="text-align: center;">Id</th>
 		<th scope="col" style="text-align: center;">Tên</th>
-		<th scope="col" style="text-align: center;">Ngay sinh</th>
+		<th scope="col" style="text-align: center;">Ngày sinh</th>
 		<th scope="col" style="text-align: center;">Địa chỉ</th>
 		<th scope="col" style="text-align: center;">Giới tính</th>
 		<th scope="col" style="text-align: center;">Điện thoại</th>
 		<th scope="col" style="text-align: center;">Email</th>
-		<th></th>
+		<th>Sửa Mật Khẩu</th>
 
 		
 		</tr>
@@ -45,7 +45,11 @@
 				<td style="text-align: center;">
 					{{ Session::get('email') }}
 				</td>
-				<!--  -->
+				<td style="text-align: center;">
+					<a href="{{ route('profile.view_change_password_profile',['id' =>  Session::get('id') ]) }}">
+						Sửa
+					</a>
+				</td>
 				
 
 			</tr>

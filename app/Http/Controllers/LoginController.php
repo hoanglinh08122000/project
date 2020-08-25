@@ -46,7 +46,7 @@ class LoginController extends Controller {
 	public function process_login_admin(Request $rq) {
 		$admin = Admin::where('email', $rq->email)->first();
 
-		if (isset($admin)) {
+		if (isset($admin) && Hash::check($rq->password, $admin->password)) {
 			Session::put('id', $admin->id);
 			Session::put('first_name', $admin->first_name);
 			Session::put('last_name', $admin->last_name);

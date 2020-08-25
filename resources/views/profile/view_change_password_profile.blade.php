@@ -6,7 +6,7 @@
 		<strong>Thay đổi mật khẩu</strong> 
 	</div>
 	<div class="card-body card-block" >
-		<form action="{{ route('admin.process_change_password_admin',['id'=>$admin->id]) }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+		<form action="{{ route('profile.process_change_password_profile',['id'=>Session::get('id')]) }}" method="post" enctype="multipart/form-data" class="form-horizontal">
 			@csrf
 			<div class="row form-group">
 				<div class="col col-md-3"><label for="text-input" class=" form-control-label">Mật khẩu hiện tại</label></div>
